@@ -8,6 +8,7 @@
 <body>
 <h2>Transactions Between Dates</h2>
 <h4>Account number: ${account.accountNumber}</h4>
+<h2>Transactions Between Dates: ${startDate.date}/${startDate.month+1}/${startDate.year+1900}-${endDate.date}/${endDate.month+1}/${endDate.year+1900}</h2>
 
 <form action="/accountTransactions/${account.id}/dateBetween" method="get">
     <label for="startDate">Start Date:</label>
@@ -20,6 +21,7 @@
 </form>
 
 <c:if test="${not empty transactionDebit or not empty transactionCredit}">
+
     <table class="table">
         <thead>
         <tr>
@@ -51,6 +53,13 @@
         </c:forEach>
         </tbody>
     </table>
+
+    <form action="/download/pdf" method="get">
+        <button type="submit">Download PDF</button>
+    </form>
+    <form action="/download/csv" method="get">
+        <button type="submit">Download CSV</button>
+    </form>
 </c:if>
 </body>
 </html>

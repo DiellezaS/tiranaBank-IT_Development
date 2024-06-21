@@ -57,7 +57,7 @@ public class TransactionController {
 
     @GetMapping("/download/pdf")
     public void downloadTransactionsPDF(HttpServletResponse response) throws IOException {
-        byte[] pdfBytes = transactionService.generatePDF(); // Assuming generatePDF() method exists in TransactionService
+        byte[] pdfBytes = transactionService.generatePDF();
         response.setContentType("application/pdf");
         response.setHeader("Content-Disposition", "attachment; filename=transactions.pdf");
         response.getOutputStream().write(pdfBytes);
@@ -65,7 +65,7 @@ public class TransactionController {
 
     @GetMapping("/download/csv")
     public void downloadTransactionsCSV(HttpServletResponse response) throws IOException {
-        byte[] csvBytes = transactionService.generateCSV(); // Assuming generateCSV() method exists in TransactionService
+        byte[] csvBytes = transactionService.generateCSV();
         response.setContentType("text/csv");
         response.setHeader("Content-Disposition", "attachment; filename=transactions.csv");
         response.getOutputStream().write(csvBytes);

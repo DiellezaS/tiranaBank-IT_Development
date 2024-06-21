@@ -73,6 +73,7 @@ public class AccountController {
         model.addAttribute("account", account);
         model.addAttribute("transactionsDebit", transactionsDebit);
         model.addAttribute("transactionsCredit", transactionsCredit);
+
         return "accountDetails";
     }
 
@@ -102,6 +103,8 @@ public class AccountController {
         model.addAttribute("transactionDebit", transactionDebit);
         model.addAttribute("transactionCredit", transactionCredit);
         model.addAttribute("account", account);
+        model.addAttribute("startDate",startDate );
+        model.addAttribute("endDate", endDate);
         return "accountTransactions";
     }
 }

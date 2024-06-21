@@ -82,7 +82,7 @@ public class TransactionService {
 
 
     public byte[] generatePDF() throws IOException {
-        List<Transaction> transactions = transactionRepository.findAll(); // Adjust based on your repository method
+        List<Transaction> transactions = transactionRepository.findAll();
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PDDocument pdfDocument = new PDDocument();
@@ -94,16 +94,30 @@ public class TransactionService {
             PDPageContentStream contentStream = new PDPageContentStream(pdfDocument, page);
             contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
             contentStream.beginText();
-            contentStream.newLineAtOffset(100, 700);
+            contentStream.newLineAtOffset(0, 20);
+            float margin = 50;
+            float yStart = page.getMediaBox().getHeight() - margin;
+            float tableWidth = page.getMediaBox().getWidth() - 2 * margin;
+            float yPosition = yStart;
+            int rows = 5; // Number of rows in the table
+            int cols = 3; // Number of columns in the table
+
 
             for (Transaction transaction : transactions) {
-                contentStream.showText("Transaction ID: " + transaction.getId());
+                contentStream.showText("Transaction Date: " + transaction.getTransactionDate());
+                contentStream.newLine();
+                contentStream.newLine();
+                contentStream.showText("Description: " + transaction.getDescription());
+                contentStream.newLine();
+                contentStream.showText("Debit Account: " + transaction.getDebitAccount());
+                contentStream.newLine();
+                contentStream.showText("Credit Account: " + transaction.getCreditAccount());
                 contentStream.newLine();
                 contentStream.showText("Amount: " + transaction.getAmount());
                 contentStream.newLine();
-                // Add more fields as needed
 
-                contentStream.newLineAtOffset(60, -40); // Move to the next line, adjust as necessary
+
+                contentStream.newLineAtOffset(0, 10);
             }
 
             contentStream.endText();
@@ -123,27 +137,55 @@ public class TransactionService {
         }
     }
     public byte[] generateCSV() throws IOException {
-        List<Transaction> transactions = (List<Transaction>) transactionRepository.findAll(); // Adjust based on your repository method
+        List<Transaction> transactions = (List<Transaction>) transactionRepository.findAll();
 
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
              OutputStreamWriter writer = new OutputStreamWriter(baos)) {
 
-            // Write header
-            writer.append("Transaction ID,Amount,Date\n");
 
-            // Write data rows
+            writer.append("Transaction Date,Description,Debit Account,Credit Account,Amount\n");
+
+
             for (Transaction transaction : transactions) {
-                writer.append(String.valueOf(transaction.getId())).append(",");
+                writer.append(String.valueOf(transaction.getTransactionDate())).append(",");
+                writer.append(String.valueOf(transaction.getDescription())).append(",");
+                writer.append(String.valueOf(transaction.getDebitAccount())).append(",");
+                writer.append(String.valueOf(transaction.getCreditAccount())).append(",");
                 writer.append(String.valueOf(transaction.getAmount())).append(",");
-                // Example: Formatting date
-                // SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                // writer.append(sdf.format(transaction.getDate())).append(",");
+
 
                 writer.append("\n");
             }
 
             writer.flush();
             return baos.toByteArray();
+        }
+    }
+
+    private static void drawTableHeader(PDPageContentStream contentStream, float xStart, float yStart, float[] columnWidths) throws IOException {
+        contentStream.setFont(PDType1Font.TIMES_BOLD, 12);
+        float xPosition = xStart;
+        float yPosition = yStart;
+        for (float width : columnWidths) {
+            contentStream.beginText();
+            contentStream.newLineAtOffset(xPosition, yPosition);
+            contentStream.showText("Header");
+            contentStream.endText();
+            xPosition += width;
+        }
+    }
+
+    // Method to draw a row in the table
+    private static void drawRow(PDPageContentStream contentStream, float xStart, float yStart, float[] columnWidths, String... cellText) throws IOException {
+        contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
+        float xPosition = xStart;
+        float yPosition = yStart;
+        for (int i = 0; i < columnWidths.length; i++) {
+            contentStream.beginText();
+            contentStream.newLineAtOffset(xPosition, yPosition);
+            contentStream.showText(cellText[i]);
+            contentStream.endText();
+            xPosition += columnWidths[i];
         }
     }
 }
