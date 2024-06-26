@@ -4,12 +4,33 @@
 <html>
 <head>
   <title>Account Detail</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: rgb(2,0,36);
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,221,81,1) 0%, rgba(26,8,164,1) 100%);
+      color: #fff;
+    }
+    table {
+      width: 80%;
+
+      margin-top: 20px;
+      border-collapse: collapse;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    </style>
 </head>
 <body>
-<table class="table table-striped">
+<jsp:include page="navbar.jsp"></jsp:include>
+<table class=" table table-striped">
+
+  <h3 class="text-center" style="margin: 40px">Details for Account Number: ${account.accountNumber}</h3>
   <thead>
   <tr>
-    <th scope="col">Account Number</th>
+
     <th scope="col">Transaction Date</th>
     <th scope="col">Transaction Description</th>
     <th scope="col">Transaction Debit</th>
@@ -22,7 +43,7 @@
   <tbody>
   <c:forEach items="${transactionsDebit}" var="transaction">
     <tr>
-      <td>${account.accountNumber}</td>
+
       <td>${transaction.transactionDate}</td>
       <td>${transaction.description}</td>
       <td>${transaction.debitAccount.accountNumber}</td>
@@ -35,7 +56,6 @@
 
   <c:forEach items="${transactionsCredit}" var="transaction">
     <tr>
-      <td>${account.accountNumber}</td>
       <td>${transaction.transactionDate}</td>
       <td>${transaction.description}</td>
       <td>${transaction.debitAccount.accountNumber}</td>
@@ -49,7 +69,7 @@
   </tbody>
 </table>
 
-
-
+<footer ><jsp:include page="footer.jsp"></jsp:include>
+</footer>
 </body>
 </html>

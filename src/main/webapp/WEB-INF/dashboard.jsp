@@ -7,17 +7,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
-    <!-- Add your CSS links or styles here -->
-
 </head>
+<style>
+    body{
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,221,81,1) 0%, rgba(26,8,164,1) 100%);
+        color: #fff;
+    }
+</style>
 <body>
-<div class="d-flex justify-content-between align-items-center">
-        <h1 class="mb-0">Welcome ${user.name}!</h1>
-<p>This is dashboard page!!</p>
-    <a href="/logout">Logout</a>
-    <a href="/createAccountView">Create Account</a>
-    <a href="/createTransactionView">Create Transaction</a>
-    <a href="/userAccounts">Your Accounts</a>
+<nav><jsp:include page="navbar.jsp"/></nav>
+
+<div >
+        <h1 class="text-center" style="margin-top: 10%">Welcome ${user.name}!</h1>
+<p>This is your page!</p>
+
 </div>
+
+<footer ><jsp:include page="footer.jsp"/></footer>
+
+
 </body>
 </html>

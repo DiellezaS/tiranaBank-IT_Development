@@ -56,30 +56,25 @@ public class CustomerController {
     @PostMapping("/login")
     public String login(@Valid @ModelAttribute("newLogin") loginCustomer newLogin, BindingResult result, Model model,
                         HttpSession session) {
-
-
         Customer customer = customerService.login(newLogin, result);
-
-
 
         if (result.hasErrors()) {
             model.addAttribute("newCustomer", new Customer());
             return "index";
         }
 
-
         session.setAttribute("loggedInCustomerId", customer.getId());
         return "redirect:/dashboard";
     }
 
     @GetMapping("/dashboard")
-    public String dashboard(HttpSession session, Model model){
-        Long loggedInCustomerId=(Long) session.getAttribute("loggedInCustomerId");
-        if (loggedInCustomerId==null){
+    public String dashboard(HttpSession session, Model model) {
+        Long loggedInCustomerId = (Long) session.getAttribute("loggedInCustomerId");
+        if (loggedInCustomerId == null) {
             return "redirect:/";
         }
-        Customer loggedInUser=customerService.findCustomerById(loggedInCustomerId);
-        model.addAttribute("user",loggedInUser);
+        Customer loggedInUser = customerService.findCustomerById(loggedInCustomerId);
+        model.addAttribute("user", loggedInUser);
         return "dashboard";
     }
     @GetMapping("/logout")
