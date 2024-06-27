@@ -31,7 +31,6 @@
   <h4 class="text-center" style="margin: 20px">Account Type : ${account.account_type}</h4>
     <thead>
   <tr>
-
     <th scope="col">Transaction Date</th>
     <th scope="col">Transaction Description</th>
     <th scope="col">Transaction Debit</th>
