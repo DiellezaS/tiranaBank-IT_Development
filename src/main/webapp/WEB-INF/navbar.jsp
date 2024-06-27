@@ -11,27 +11,26 @@
             font-family: Arial, sans-serif;
         }
         .navbar-custom {
-            background-color: #f8b400;
-            padding: 26px 40px;
+            background-color: #f4ba20;
+            padding: 20px 30px;
             border-radius: 5px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
-
         }
         .navbar-custom a {
-            color: #333;
+            color: #243b7f;
             text-decoration: none;
-            justify-content: end;
+            align-content: center;
             margin: 0 20px;
             font-size: 20px;
             font-weight: bold;
             transition: color 0.3s ease;
         }
         .navbar-custom a:hover {
-            color: blue;
+            color: #243b7f;
         }
         img{
-            width: 40px;
+            width: 35px;
         }
     </style>
 </head>

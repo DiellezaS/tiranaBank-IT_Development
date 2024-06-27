@@ -18,14 +18,16 @@
 <body>
 <nav><jsp:include page="navbar.jsp"/></nav>
 
-<div >
-        <h1 class="text-center" style="margin-top: 10%">Welcome ${user.name}!</h1>
-<p>This is your page!</p>
+<div  class="text-center " >
+        <h1 class="fw-bold" style="margin-top: 10%; margin-bottom: 5%;color: #f4ba20">Welcome ${user.name} ${user.lastname}!</h1>
+    <h4 class="fw-bold" style="color: #243b7f">Manage your accounts and generate statements easily!</h4>
 
 </div>
 
-<footer ><jsp:include page="footer.jsp"/></footer>
 
-
+<footer><jsp:include page="footer.jsp"/>
+</footer>
 </body>
+
+
 </html>

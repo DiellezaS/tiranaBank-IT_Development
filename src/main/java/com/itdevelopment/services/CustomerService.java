@@ -59,7 +59,7 @@ public class CustomerService {
 
 
         if (!potentialCustomer.isPresent()) {
-            result.rejectValue("email", "PersonalIdNotFound", "No user found with that Personal Id address.");
+            result.rejectValue("personalNumberId", "PersonalIdNotFound", "No user found with that Personal Id address.");
         } else {
 
             if (!BCrypt.checkpw(newLogin.getPassword(), potentialCustomer.get().getPassword())) {

@@ -28,7 +28,8 @@
 <table class=" table table-striped">
 
   <h3 class="text-center" style="margin: 40px">Details for Account Number: ${account.accountNumber}</h3>
-  <thead>
+  <h4 class="text-center" style="margin: 20px">Account Type : ${account.account_type}</h4>
+    <thead>
   <tr>
 
     <th scope="col">Transaction Date</th>
@@ -69,7 +70,7 @@
   </tbody>
 </table>
 
-<footer ><jsp:include page="footer.jsp"></jsp:include>
-</footer>
+<jsp:include page="footer.jsp"></jsp:include>
+
 </body>
 </html>

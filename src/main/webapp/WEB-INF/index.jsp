@@ -17,7 +17,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     .container {
-      max-width:40%;
+      max-width:50%;
 
       position: center;
       margin-top:10%;
@@ -38,6 +38,7 @@
     }
     .form-floating {
       width: 100%;
+      margin-top: 16px;
     }
     .btn-submit {
       background-color: blue;
@@ -60,6 +61,7 @@
     .form-container {
       background-color: rgba(255, 255, 255, 0.25);
       padding: 20px;
+      margin-top: 10px;
       border-radius: 10px;
       box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     }
@@ -69,9 +71,9 @@
 <div class="container">
   <div class="text-center">
     <h2 class="form-header">Welcome to Our Statement of Account Application</h2>
-    <p>Manage your accounts and generate statements easily!</p>
+
   </div>
-  <div class="d-flex justify-content-evenly">
+  <div class="d-flex justify-content-evenly " >
     <button class="btn btn-lg btn-custom" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRegister" aria-expanded="false" aria-controls="collapseRegister">
       Register
     </button>
@@ -81,7 +83,7 @@
   </div>
 
   <div class=" mt-4 rounded form-container collapse" id="collapseRegister">
-    <h3 class="mb-4 text-center">Register</h3>
+    <h3 class="mb-6 text-center">Register</h3>
     <form:form modelAttribute="newCustomer" action="/register" method="post" class="gap-3">
       <div class="form-floating">
         <form:input path="name" id="name" type="text" class="form-control" placeholder="Name"/>

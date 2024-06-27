@@ -13,13 +13,13 @@ import lombok.*;
 @NoArgsConstructor
     public class loginCustomer {
 
-        @NotEmpty(message = "Personal Number is required!")
-        @Pattern(regexp = "^[a-zA-Z]\\d{8}[a-zA-Z]$", message = "Personal Number-Id Invalid format Expected pattern: Letter-Numbers-Letter")
-        private String personalNumberId;
+@NotEmpty(message = "Personal Number is required!")
+@Pattern(regexp = "^[a-zA-Z]\\d{8}[a-zA-Z]$", message = "Personal Number-Id Invalid format Expected pattern: Letter-Numbers-Letter")
+private String personalNumberId;
 
-        @NotEmpty(message="Password is required!")
-        @Size(min=8, max=128, message="Password must be at least 8 characters")
-        private String password;
+    @NotEmpty(message="Password is required!")
+    @Size(min=8, max=128, message="Password must be at least 8 characters")
+    private String password;
     }
 
 
