@@ -13,7 +13,6 @@
     }
     table {
       width: 80%;
-
       margin-top: 20px;
       border-collapse: collapse;
       border-radius: 10px;

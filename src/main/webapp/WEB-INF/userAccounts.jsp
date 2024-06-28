@@ -15,6 +15,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            bottom: 0%;
         }
         .container {
             flex: 1;
@@ -30,10 +31,12 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            align-items: center;
         }
         th, td {
             padding: 12px 15px;
-            text-align: left;
+            align-items: center;
+
         }
         th {
             background-color: #343a40;
